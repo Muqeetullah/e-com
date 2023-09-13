@@ -12,6 +12,7 @@ import CartIcon from "../cartIcon";
 import {UserCircleIcon, ShoppingBagIcon} from "@heroicons/react/24/outline";
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 interface Props {
   cartItemsCount: number;
@@ -30,7 +31,7 @@ export const menuItems = [
   },
 ];
 
-export default function NavUI({cartItemsCount}: Props) {
+const NavUI = ({cartItemsCount}: Props) => {
   const [open, setOpen] = useState(false);
   const {loading, loggedIn} = useAuth();
 
@@ -59,7 +60,7 @@ export default function NavUI({cartItemsCount}: Props) {
               <Spinner />
             ) : (
               <>
-                <Link className="px-4 py-1" href="/auth/signins">
+                <Link className="px-4 py-1" href="/auth/signin">
                   Sign in
                 </Link>
                 <Link
@@ -99,4 +100,5 @@ export default function NavUI({cartItemsCount}: Props) {
       </div>
     </>
   );
-}
+};
+export default NavUI;
