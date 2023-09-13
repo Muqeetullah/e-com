@@ -59,6 +59,7 @@ export default function SignUp() {
         onChange={handleChange}
         value={name}
         onBlur={handleBlur}
+        color={touched.name && errors.name ? "red" : "black"}
       />
       <Input
         name="email"
@@ -66,6 +67,7 @@ export default function SignUp() {
         onChange={handleChange}
         value={email}
         onBlur={handleBlur}
+        color={touched.email && errors.email ? "red" : "black"}
       />
       <Input
         name="password"
@@ -74,6 +76,7 @@ export default function SignUp() {
         onChange={handleChange}
         value={password}
         onBlur={handleBlur}
+        color={touched.password && errors.password ? "red" : "black"}
       />
       <Button type="submit" className="w-full">
         Sign up
