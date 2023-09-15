@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import {useState} from "react";
 import Link from "next/link";
-import useAuth from "@/hooks/useAuth";
+import useAuth from "@/components/hooks/useAuth";
 import {MenuItems} from "@/types/MenuItems";
 
 interface Props {

@@ -3,6 +3,7 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import Navbar from "@/components/Navbar";
 import {ReactNode} from "react";
+import Notificaction from "@/components/notificaction";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -20,6 +21,7 @@ export default function RootLayout({children}: Props) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+        <Notificaction />
         {children}
       </body>
     </html>

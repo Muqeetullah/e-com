@@ -10,7 +10,7 @@ import ProfileMenu from "../profileAvatar";
 import {MobileNav} from "../MobileNav/movbileNav";
 import CartIcon from "../cartIcon";
 import {UserCircleIcon, ShoppingBagIcon} from "@heroicons/react/24/outline";
-import useAuth from "@/hooks/useAuth";
+import useAuth from "@/components/hooks/useAuth";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -49,7 +49,7 @@ const NavUI = ({cartItemsCount}: Props) => {
             href="/"
             className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-semibold"
           >
-            Next Ecom
+            Luxe Lane
           </Link>
 
           <div className="hidden lg:flex gap-2 items-center">
