@@ -111,6 +111,10 @@ export default function SignUp() {
           <>SignUp</>
         )}
       </Button>
+      <div className="flex items-center justify-between">
+        <Link href="/auth/signin">Sign in</Link>
+        <Link href="/auth/forget-password">Forget password</Link>
+      </div>
 
       <div className="">
         {formErrors.map(err => {

@@ -34,12 +34,13 @@ userSchema.pre("save", async function (next) {
     throw error;
   }
 });
-userSchema.methods.comaprePassword = async function (password) {
+userSchema.methods.comparePassword = async function (password: string) {
   try {
     return await compare(password, this.password);
   } catch (error) {
     throw error;
   }
 };
+
 const UserModel = models.User || model("User", userSchema);
-export default UserModel as Model<UserDocument>;
+export default UserModel as Model<UserDocument, {}, Method>;
