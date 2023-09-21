@@ -1,5 +1,4 @@
 "use client";
-
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import {Button, Input} from "@material-tailwind/react";
 import AuthFormContainer from "@/components/authFormContainer";
@@ -14,7 +13,7 @@ const validationSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
-    .min(8, "Password must be at least 8 characters")
+    // .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
 });
 
@@ -31,8 +30,11 @@ export default function SignIn() {
     initialValues: {email: "", password: ""},
     validationSchema,
     onSubmit: async (values, actions) => {
-      console.log(values);
-      await signIn("credentials", {...values});
+      const status = await signIn("credentials", {
+        ...values,
+        redirect: false,
+      });
+      console.log(status);
     },
   });
 

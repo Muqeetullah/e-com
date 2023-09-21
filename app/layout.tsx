@@ -4,6 +4,7 @@ import {Inter} from "next/font/google";
 import Navbar from "@/components/Navbar";
 import {ReactNode} from "react";
 import Notificaction from "@/components/notificaction";
+import AuthSessionProvider from "@/components/AuthSessionProvier";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -20,9 +21,11 @@ export default function RootLayout({children}: Props) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <Notificaction />
-        {children}
+        <AuthSessionProvider>
+          <Navbar />
+          {children}
+          <Notificaction />
+        </AuthSessionProvider>
       </body>
     </html>
   );
