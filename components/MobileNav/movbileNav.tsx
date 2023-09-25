@@ -10,8 +10,9 @@ import {
 import {XMarkIcon, RectangleGroupIcon} from "@heroicons/react/24/outline";
 import {PowerIcon} from "@heroicons/react/24/solid";
 import Link from "next/link";
-import useAuth from "@/hooks/useAuth";
+import useAuth from "@/components/hooks/useAuth";
 import {MenuItems} from "@/types/MenuItems";
+import SignOutButton from "../signOutButton";
 
 interface Props {
   open: boolean;
@@ -27,7 +28,7 @@ export function MobileNav({open, onClose, menuItems}: Props) {
       <Drawer open={open} onClose={onClose}>
         <div className="mb-2 flex items-center justify-between p-4 z-50">
           <Typography variant="h5" color="blue-gray">
-            Next Ecom
+            Luxe Lane
           </Typography>
           <IconButton variant="text" color="blue-gray" onClick={onClose}>
             <XMarkIcon strokeWidth={2} className="h-5 w-5" />
@@ -57,12 +58,14 @@ export function MobileNav({open, onClose, menuItems}: Props) {
           ) : null}
 
           {loggedIn ? (
-            <ListItem>
-              <ListItemPrefix>
-                <PowerIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Sign Out
-            </ListItem>
+            <SignOutButton>
+              <ListItem>
+                <ListItemPrefix>
+                  <PowerIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Sign Out
+              </ListItem>
+            </SignOutButton>
           ) : (
             <div className="flex items-center">
               <Link
