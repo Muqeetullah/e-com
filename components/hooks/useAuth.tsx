@@ -8,8 +8,8 @@ const useAuth = (): Auth => {
   const session = useSession();
   console.log(session);
   return {
-    loading: false,
-    loggedIn: false,
+    loading: session.status === "loading",
+    loggedIn: session.status === "authenticated",
     isAdmin: false,
   };
 };
