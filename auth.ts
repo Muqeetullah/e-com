@@ -23,6 +23,23 @@ const authConfig: NextAuthConfig = {
       },
     }),
   ],
+  callbacks: {
+    async jwt(params) {
+      if (params.user) {
+        params.token = {...params.token, ...params.user};
+      }
+      console.log("user", params.user);
+      return params.token;
+    },
+    async session(params) {
+      const user = params.session.user;
+
+      if (user) {
+        params.session.user = {...params.session.user, ...user};
+      }
+      return params.session;
+    },
+  },
 };
 
 export const {

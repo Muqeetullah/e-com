@@ -56,7 +56,7 @@ export default function SignUp() {
           toast.success(message);
           // router.push("/");
         }
-
+        if (!res.ok) toast.error("Email already exists");
         setIsLoading(false);
       });
     },
