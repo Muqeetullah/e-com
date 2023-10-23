@@ -9,6 +9,7 @@ import {Spinner} from "@material-tailwind/react";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {toast} from "react-toastify";
+import {signIn} from "next-auth/react";
 
 const validationSchema = yup.object().shape({
   name: yup
@@ -44,21 +45,26 @@ export default function SignUp() {
     onSubmit: async values => {
       setIsLoading(true);
 
-      await fetch("/api/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
           "Content-Type": "application/json", // Set the Content-Type header for JSON
         },
-      }).then(async res => {
-        if (res.ok) {
-          const {message} = (await res.json()) as {message: string};
-          toast.success(message);
-          // router.push("/");
-        }
-        if (!res.ok) toast.error("Email already exists");
-        setIsLoading(false);
       });
+      const {message, error} = (await res.json()) as {
+        message: string;
+        error: string;
+      };
+      if (res.ok) {
+        await signIn("credentials", {
+          email: values.email,
+          password: values.password,
+        });
+        toast.success(message);
+      }
+      if (!res.ok && error) toast.error(error);
+      setIsLoading(false);
     },
   });
 
