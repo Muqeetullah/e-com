@@ -5,10 +5,13 @@ interface Props {
 }
 
 const SelectedImageThumb = ({src}: Props) => {
-  if (!src) return null;
+  if (!src) {
+    console.log("Source", src);
+    return;
+  }
 
   return (
-    <div className="w-20 h-20 relative">
+    <div className="w-20 h-20">
       <Image
         src={src}
         alt="product"

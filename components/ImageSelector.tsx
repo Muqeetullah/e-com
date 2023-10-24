@@ -33,7 +33,7 @@ export default function ImageSelector({
     <div className="flex items-center space-x-4">
       {images?.map((img, index) => {
         return (
-          <div key={index} className="relative">
+          <div key={index} className="relative h-16 w-16 ">
             <SelectedImageThumb src={img} />
             {multiple ? (
               <div

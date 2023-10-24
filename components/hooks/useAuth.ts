@@ -8,7 +8,7 @@ interface Auth {
 }
 const useAuth = (): Auth => {
   const session = useSession();
-  console.log("Use Session", session);
+
   const user = session.data?.user;
 
   return {

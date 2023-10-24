@@ -15,10 +15,11 @@ import React, {
 import {PlusIcon, TrashIcon} from "@heroicons/react/24/outline";
 import categories from "@/utils/categories";
 import ImageSelector from "./ImageSelector";
+import {NewProductInfo} from "@/types";
 
 interface Props {
   initialValue?: InitialValue;
-  onSubmit(values: any): void;
+  onSubmit(values: NewProductInfo): void;
 }
 
 export interface InitialValue {
@@ -117,6 +118,7 @@ export default function ProductForm(props: Props) {
     const files = target.files;
     if (files) {
       const file = files[0];
+      console.log("URL.createObjectURL(file)", URL.createObjectURL(file));
       setThumbnail(file);
       setThumbnailSource([URL.createObjectURL(file)]);
     }
