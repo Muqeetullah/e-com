@@ -25,6 +25,10 @@ export default function ProfileMenu({menuItems}: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const {isAdmin} = useAuth();
+  console.log(
+    "🚀 ~ file: profileAvatar.tsx:28 ~ ProfileMenu ~ isAdmin:",
+    isAdmin
+  );
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">

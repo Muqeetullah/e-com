@@ -36,14 +36,6 @@ userSchema.pre("save", async function (next) {
 });
 userSchema.methods.comparePassword = async function (password: string) {
   try {
-    console.log(
-      "🚀 ~ file: usermodel.ts:41 ~ password",
-      password,
-      "this.password:",
-
-      this.password
-    );
-    console.log("Return this=======================", compare(password, this.password));
     return await compare(password, this.password);
   } catch (error) {
     throw error;

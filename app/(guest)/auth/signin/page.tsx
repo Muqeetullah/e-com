@@ -36,17 +36,18 @@ export default function SignIn() {
     validationSchema,
     onSubmit: async (values, actions) => {
       setIsLoading(true);
+
       const status = await signIn("credentials", {
         ...values,
         redirect: false,
       });
-
+      console.log("Status", status);
       if (status?.error === "CredentialsSignin") {
         toast.error("Invalid Email/Password");
       }
       if (!status?.error) {
         toast.success("Login Successful");
-        router.replace("/");
+        router.refresh();
       }
       setIsLoading(false);
     },

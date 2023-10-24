@@ -1,7 +1,6 @@
 import "./globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import Navbar from "@/components/Navbar";
 import {ReactNode} from "react";
 import Notificaction from "@/components/notificaction";
 import AuthSessionProvider from "@/components/AuthSessionProvier";
@@ -22,7 +21,6 @@ export default function RootLayout({children}: Props) {
     <html lang="en">
       <body className={inter.className}>
         <AuthSessionProvider>
-          <Navbar />
           {children}
           <Notificaction />
         </AuthSessionProvider>

@@ -1,6 +1,13 @@
 import NextAuth, {NextAuthConfig} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {SignInCredentials} from "./types/SigninCredential";
+import {SessionUserProfile} from "./types";
+
+declare module "next-auth" {
+  interface Session {
+    user: SessionUserProfile;
+  }
+}
 
 const authConfig: NextAuthConfig = {
   providers: [
@@ -28,14 +35,22 @@ const authConfig: NextAuthConfig = {
       if (params.user) {
         params.token = {...params.token, ...params.user};
       }
-      console.log("user", params.user);
+
       return params.token;
     },
     async session(params) {
-      const user = params.session.user;
-
+      const user = params.token as typeof params.token & SessionUserProfile;
       if (user) {
-        params.session.user = {...params.session.user, ...user};
+        params.session.user = {
+          ...params.session.user,
+
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          avatar: user.avatar,
+          verified: user.verified,
+          role: user.role,
+        };
       }
       return params.session;
     },
